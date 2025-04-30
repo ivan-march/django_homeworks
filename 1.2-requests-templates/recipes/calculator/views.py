@@ -28,3 +28,12 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def calculate_ingredients(request, dish):
+    template_name = 'calculator/index.html'
+    servings = int(request.GET.get('servings', 1))
+    recipe = DATA.get(dish, {})
+    if recipe and servings > 1:
+        recipe = {key: value * servings for key, value in recipe.items()}
+    context = {'recipe': recipe}
+    return render(request, template_name, context)
