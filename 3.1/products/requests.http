@@ -1,0 +1,10 @@
+GET http://localhost:8000/products/
+
+###
+GET http://localhost:8000/products/2/
+
+###
+GET http://localhost:8000/products/reviews/1/
+
+###
+GET http://localhost:8000/products/reviews/1/?mark=234dd
