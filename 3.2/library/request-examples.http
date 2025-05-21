@@ -1,0 +1,95 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api/v1
+
+###
+
+# создание книги
+# DONE
+POST {{baseUrl}}/books/create/
+Content-Type: application/json
+
+{
+  "author": "Николай Васильевич Гоголь",
+  "title": "Мёртвые души",
+  "year": 1843
+}
+
+###
+
+# получение списка книг
+# DONE
+GET {{baseUrl}}/books/
+Content-Type: application/json
+
+###
+
+# получение одной книги
+# DONE
+GET {{baseUrl}}/books/3/
+Content-Type: application/json
+
+###
+
+# обновление книги
+# DONE
+PATCH {{baseUrl}}/books/update/1/
+Content-Type: application/json
+
+{
+  "year": 1843
+}
+
+###
+
+# удаление книги
+# DONE
+DELETE {{baseUrl}}/books/delete/1/
+Content-Type: application/json
+
+###
+
+# создание заказа
+# DONE
+POST {{baseUrl}}/orders/
+Content-Type: application/json
+
+{
+  "user_name": "Иван Петров",
+  "days_count": 2,
+  "books": [3, 2]
+}
+
+###
+
+# получение списка заказов
+# DONE
+GET {{baseUrl}}/orders/
+Content-Type: application/json
+
+###
+
+# получение одного заказа
+# DONE
+GET {{baseUrl}}/orders/1/
+Content-Type: application/json
+
+###
+
+# обновление книги
+# DONE
+PATCH {{baseUrl}}/orders/1/
+Content-Type: application/json
+
+{
+  "days_count": 3
+}
+
+###
+
+# удаление книги
+# DONE
+DELETE {{baseUrl}}/orders/2/
+Content-Type: application/json
+
+###
