@@ -5,8 +5,9 @@ from django.db import models
 class AdvertisementStatusChoices(models.TextChoices):
     """Статусы объявления."""
 
-    OPEN = "OPEN", "Открыто"
-    CLOSED = "CLOSED", "Закрыто"
+    OPEN = 'OPEN', 'Открыто'
+    CLOSED = 'CLOSED', 'Закрыто'
+    DRAFT = 'DRAFT', 'Черновик'
 
 
 class Advertisement(models.Model):
@@ -28,3 +29,20 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
+
+class FavoriteAdvertisement(models.Model):
+    """Избранные объявления"""
+
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    advertisement = models.ForeignKey(
+        'Advertisement',
+        on_delete=models.CASCADE,
+        related_name='favorites'
+    )
+
+    class Meta:
+        unique_together = ('creator', 'advertisement')
